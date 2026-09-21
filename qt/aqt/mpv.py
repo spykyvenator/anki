@@ -93,7 +93,7 @@ class MPVBase:
 
     if is_win:
         default_argv += ["--af-add=lavfi=[apad=pad_dur=0.150]"]
-    if b"--ytdl" in subprocess.check_output(['mpv', '--list-options']):
+    if b"--ytdl" in subprocess.check_output(["mpv", "--list-options"]):
         # if mpv has not lua compiled into it this arg will make it fail to launch
         default_argv += ["--no-ytdl"]
 
