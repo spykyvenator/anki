@@ -93,8 +93,8 @@ class MPVBase:
 
     if is_win:
         default_argv += ["--af-add=lavfi=[apad=pad_dur=0.150]"]
-    if not is_mac:
-        # our mpv build for macOS doesn't support this option (compiled out)
+    if b"--ytdl" in subprocess.check_output(['mpv', '--list-options']):
+        # if mpv has not lua compiled into it this arg will make it fail to launch
         default_argv += ["--no-ytdl"]
 
     def __init__(self, window_id=None, debug=False):
